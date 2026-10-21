@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
@@ -8,6 +9,15 @@ import ConsultationForm from '@/components/ConsultationForm';
 import Chatbot from '@/components/Chatbot';
 
 const Services = () => {
+  const { hash } = useLocation();
+
+  // Scroll to the service section in the URL hash (e.g. /services#work-visa)
+  useEffect(() => {
+    if (hash) {
+      document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [hash]);
+
   // Service categories
   const serviceCategories = [
     {
@@ -183,7 +193,7 @@ const Services = () => {
                     </div>
                   </div>
                   <Button asChild className="btn-primary">
-                    <a href={`/services/${service.id}`}>Learn More</a>
+                    <a href="#consultation">Get Free Consultation</a>
                   </Button>
                 </div>
                 <div>

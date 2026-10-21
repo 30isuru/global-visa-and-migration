@@ -1,11 +1,12 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GraduationCap, Briefcase, Award, Users, LucideIcon } from 'lucide-react';
 
 interface Service {
   title: string;
   description: string;
-  icon: string;
+  icon: LucideIcon;
   link: string;
 }
 
@@ -14,26 +15,26 @@ const ServicesSection = () => {
     {
       title: "Student Visa",
       description: "Pursue your educational dreams abroad with our comprehensive student visa services.",
-      icon: "/placeholder.svg",
-      link: "/services/student-visa"
+      icon: GraduationCap,
+      link: "/services#student-visa"
     },
     {
       title: "Work Visa",
       description: "Explore international career opportunities with our expert work visa guidance.",
-      icon: "/placeholder.svg",
-      link: "/services/work-visa"
+      icon: Briefcase,
+      link: "/services#work-visa"
     },
     {
       title: "Skilled Migration",
       description: "Leverage your qualifications for permanent residency through skilled migration programs.",
-      icon: "/placeholder.svg",
-      link: "/services/skilled-migration"
+      icon: Award,
+      link: "/services#skilled-migration"
     },
     {
       title: "Family Sponsorship",
       description: "Reunite with your loved ones with our family sponsorship visa assistance.",
-      icon: "/placeholder.svg",
-      link: "/services/family-sponsorship"
+      icon: Users,
+      link: "/services#family-sponsorship"
     }
   ];
 
@@ -51,11 +52,9 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div key={index} className="service-card">
               <div className="mb-4 flex justify-center">
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  className="w-16 h-16 text-globalmigrate-blue"
-                />
+                <div className="w-16 h-16 rounded-full bg-globalmigrate-lightblue flex items-center justify-center">
+                  <service.icon className="w-8 h-8 text-globalmigrate-blue" strokeWidth={1.75} />
+                </div>
               </div>
               <h3 className="text-xl font-semibold mb-2 text-center">{service.title}</h3>
               <p className="text-gray-600 mb-4 text-center">{service.description}</p>
