@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: global-visa-and-migration
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20.15.1
+    # Send every path to the React app so links like /countries/canada work on refresh
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
